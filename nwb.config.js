@@ -13,6 +13,17 @@ module.exports = {
       },
     },
   },
+  babel: {
+    plugins: [
+      [
+        'babel-plugin-transform-react-remove-prop-types',
+        {
+          removeImport: true,
+          mode: 'remove',
+        },
+      ],
+    ],
+  },
   webpack: {
     extra: {
       plugins: [new StatsPlugin('/stats.json')],

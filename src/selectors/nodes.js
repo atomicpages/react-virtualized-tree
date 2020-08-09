@@ -1,7 +1,4 @@
 import {createSelector} from 'reselect';
-import omit from 'lodash.omit';
-import findIndex from 'lodash.findindex';
-
 import {UPDATE_TYPE} from '../contants';
 
 export {getFlattenedTree} from './getFlattenedTree';
@@ -19,7 +16,7 @@ export const getNodeRenderOptions = createSelector(
   }),
 );
 
-const FLATTEN_TREE_PROPERTIES = ['deepness', 'parents'];
+// const FLATTEN_TREE_PROPERTIES = ['deepness', 'parents'];
 
 const NODE_OPERATION_TYPES = {
   CHANGE_NODE: 'CHANGE_NODE',
@@ -27,13 +24,17 @@ const NODE_OPERATION_TYPES = {
 };
 
 const NODE_CHANGE_OPERATIONS = {
-  CHANGE_NODE: (nodes, updatedNode) =>
-    nodes.map(
-      n =>
-        n.id === updatedNode.id
-          ? omit({...updatedNode, ...(n.children && {children: [...n.children]})}, FLATTEN_TREE_PROPERTIES)
-          : n,
-    ),
+  CHANGE_NODE: (nodes, updatedNode) => {
+    return nodes.map(n => {
+      if (n.id === updatedNode.id) {
+        const {deepness, parents, ...rest} = {...updatedNode, ...(n.children && {children: [...n.children]})};
+
+        return rest;
+      }
+
+      return n;
+    });
+  },
   DELETE_NODE: (nodes, updatedNode) => nodes.filter(n => n.id !== updatedNode.id),
 };
 
@@ -48,7 +49,7 @@ export const replaceNodeFromTree = (nodes, updatedNode, operation = NODE_OPERATI
     return NODE_CHANGE_OPERATIONS[operation](nodes, updatedNode);
   }
 
-  const parentIndex = findIndex(nodes, n => n.id === parents[0]);
+  const parentIndex = nodes.findIndex(n => n.id === parents[0]);
   const preSiblings = nodes.slice(0, parentIndex);
   const postSiblings = nodes.slice(parentIndex + 1);
 
@@ -95,7 +96,7 @@ export const addNode = node => ({
   type: UPDATE_TYPE.ADD,
 });
 
-export const getRowIndexFromId = (flattenedTree, id) => findIndex(flattenedTree, node => node.id === id);
+export const getRowIndexFromId = (flattenedTree, id) => flattenedTree.findIndex(node => node.id === id);
 
 /**
  * Gets a node in the original tree from a provided path.

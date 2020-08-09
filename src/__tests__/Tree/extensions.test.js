@@ -1,7 +1,7 @@
 jest.mock('react-virtualized');
 
 import React from 'react';
-import {render, cleanup, fireEvent} from 'react-testing-library';
+import {render, cleanup, fireEvent} from '@testing-library/react';
 
 import Tree, {constants, renderers} from '../..';
 const {Expandable} = renderers;
