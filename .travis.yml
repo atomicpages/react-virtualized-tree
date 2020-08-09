@@ -9,7 +9,7 @@ before_install:
 
 script:
   - yarn run build
-  - yarn run test:coverage
+  - yarn run test
 
 after_success:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

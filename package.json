@@ -18,9 +18,9 @@
     "build": "nwb build-react-component --copy-files",
     "clean": "nwb clean-module && nwb clean-demo",
     "start": "nwb serve-react-demo",
-    "test": "node config/test/test.js --env=jsdom",
-    "test:coverage": "node config/test/test.js --env=jsdom --coverage",
-    "prepublishOnly": "npm-run-all clean -p build test:coverage",
+    "test": "node config/test/test.js --env=jsdom --coverage",
+    "test:watch": "node config/test/test.js --env=jsdom",
+    "version": "npm-run-all clean build",
     "stats:analyzer": "webpack-bundle-analyzer umd/stats.json umd"
   },
   "dependencies": {
