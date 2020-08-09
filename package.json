@@ -12,6 +12,9 @@
     "umd",
     "index.d.ts"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "prepare": "npm run build",
     "prettier": "prettier --write '**/*.js'",
