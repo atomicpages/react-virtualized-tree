@@ -44,8 +44,6 @@ export interface TreeProps {
 
 export default class Tree extends React.Component<TreeProps> {}
 
-export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
-
 export interface RendererProps<T> {
   measure: () => void;
   index: number;

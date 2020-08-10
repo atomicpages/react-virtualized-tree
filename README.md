@@ -1,4 +1,4 @@
-# react-virtualized-tree
+# @djthoms/react-virtualized-tree
 
 [![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
@@ -9,7 +9,7 @@
 [build-badge]: https://img.shields.io/travis/diogofcunha/react-virtualized-tree/master.png?style=flat-square
 [build]: https://travis-ci.org/diogofcunha/react-virtualized-tree
 [npm-badge]: https://img.shields.io/npm/v/react-virtualized-tree.png?style=flat-square
-[npm]: https://www.npmjs.com/package/react-virtualized-tree
+[npm]: https://www.npmjs.com/package/@djthoms/react-virtualized-tree
 [coveralls-badge]: https://img.shields.io/coveralls/diogofcunha/react-virtualized-tree/master.png?style=flat-square
 [coveralls]: https://coveralls.io/github/diogofcunha/react-virtualized-tree
 
@@ -21,39 +21,49 @@
 
 **react-virtualized-tree** is a tree view react library built on top of [react-virtualized](https://bvaughn.github.io/react-virtualized/#/components/List)
 
-Its main goal is to display tree like data in a beautiful and fast way. Being a reactive library it uses children functions to achieve maximum extensibility. The core idea behind it is that anyone using it is enable to create a tree as they intent just by rendering their own components or components exported by the tree.
+The main goal is to display tree like data in a beautiful and fast way. Being a reactive library it uses children functions to achieve maximum extensibility. The core idea behind it is that anyone using it is enable to create a tree as they intent just by rendering their own components or components exported by the tree.
 
 Demo and docs can be found [in here](https://diogofcunha.github.io/react-virtualized-tree/#/examples/basic-tree).
 
 ## Installation
 
-You can install via npm or yarn.
-`npm i react-virtualized-tree --save`
+You can install via `npm` or `yarn`:
 
-or
-
-`yarn add react-virtualized-tree`
-
-To get the basic styles for free you need to import react-virtualized styles only once.
-
-```
-import 'react-virtualized/styles.css'
-import 'react-virtualized-tree/lib/main.css'
+```sh
+npm i @djthoms/react-virtualized-tree react-virtualized # or
+yarn add @djthoms/react-virtualized-tree react-virtualized
 ```
 
-If you want to use the icons in the default renderers do the same for material icons.
+Using webpack or another modern bundler? Import the styles, too!
 
-`import 'material-icons/css/material-icons.css'`
+```js
+import '@djthoms/react-virtualized/styles.css';
+import '@djthoms/react-virtualized-tree/lib/main.css';
+```
+
+If you want to use the icons in the default renderers do the same for material icons:
+
+```sh
+npm i material-icons
+```
+
+```js
+import 'material-icons/css/material-icons.css';
+```
 
 ## Usage
 
 To use the standalone tree
 
-`import Tree from 'react-virtualized-tree'`
+```js
+import Tree from '@djthoms/react-virtualized-tree';
+```
 
 To use the FilteringContainer
 
-`import { FilteringContainer } from 'react-virtualized-tree'`
+```js
+import { FilteringContainer } from '@djthoms/react-virtualized-tree';
+```
 
 ## Dependencies
 
